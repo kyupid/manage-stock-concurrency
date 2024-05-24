@@ -1,13 +1,16 @@
 spring:
-
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DATASOURCE_URL:jdbc:mysql://localhost:4306/stock_concurrency}
+    url: ${DATASOURCE_URL:jdbc:mysql://localhost:4306/test_db}
     username: ${DATASOURCE_USERNAME:root}
-    password: ${DATASOURCE_PASSWORD:password1}
+    password: ${DATASOURCE_PASSWORD:test_password}
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop # 테스트용: 종료 시 데이터베이스 삭제
     show-sql: true
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}

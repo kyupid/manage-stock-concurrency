@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  test-mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: test_password
+      MYSQL_DATABASE: test_db
+    ports:
+      - "4306:3306" # 테스트 중 호스트의 4306 포트를 컨테이너의 3306 포트와 매핑
+
+  test-redis:
+    image: redis:7.0 # Redis 버전 선택
+    container_name: redis-test
+    ports:
+      - "6379:6379" # 테스트 중 호스트의 6379 포트를 컨테이너의 6379 포트와 매핑
